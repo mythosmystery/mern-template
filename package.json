@@ -1,0 +1,26 @@
+{
+  "name": "mern-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build",
+    "seed": "cd server && npm run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mythosmystery/mern-template.git"
+  },
+  "author": "Hunter Barton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mythosmystery/mern-template/issues"
+  },
+  "homepage": "https://github.com/mythosmystery/mern-template#readme"
+}
