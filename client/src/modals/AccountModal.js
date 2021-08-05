@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, Tab, Nav } from 'react-bootstrap';
-import Login from '../components/Login';
-import CreateAccount from '../components/CreateAccount';
-function AccountModal({ showModal, onHide, authRoute }) {
+import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
+const AccountModal = ({ showModal, onHide }) => {
    return (
       <Modal size="lg" show={showModal} onHide={onHide} aria-labelledby="account-modal">
          {/* tab container to either create account or login component */}
@@ -22,15 +22,15 @@ function AccountModal({ showModal, onHide, authRoute }) {
             <Modal.Body>
                <Tab.Content>
                   <Tab.Pane eventKey="login">
-                     <Login handleModalClose={onHide} route={authRoute} />
+                     <LoginForm handleModalClose={onHide} />
                   </Tab.Pane>
                   <Tab.Pane eventKey="signup">
-                     <CreateAccount handleModalClose={onHide} route={authRoute} />
+                     <SignupForm handleModalClose={onHide} />
                   </Tab.Pane>
                </Tab.Content>
             </Modal.Body>
          </Tab.Container>
       </Modal>
    );
-}
+};
 export default AccountModal;

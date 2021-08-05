@@ -4,7 +4,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import AccountModal from '../modals/AccountModal';
 import Auth from '../utils/auth';
 
-const AppNavbar = ({ authRoute }) => {
+const AppNavbar = () => {
    // set modal display state
    const [showAccountModal, setShowAccountModal] = useState(false);
 
@@ -33,7 +33,7 @@ const AppNavbar = ({ authRoute }) => {
                </Navbar.Collapse>
             </Container>
          </Navbar>
-         <AccountModal showModal={showAccountModal} onHide={() => setShowAccountModal(false)} authRoute={authRoute} />
+         <AccountModal showModal={showAccountModal} onHide={() => setShowAccountModal(false)} />
       </>
    );
 };

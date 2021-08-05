@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken');
-
 // set token secret and expiration date
-const secret = 'mysecretsshhhhh';
-const expiration = '2h';
+const secret = process.env.AUTH_SECRET || 'seeeecret';
+const expiration = process.env.TOKEN_EXPIRES || '2h';
 
 module.exports = {
    authMiddleware: ({ req }) => {
@@ -29,8 +28,8 @@ module.exports = {
       // return the request object so it can be passed to the resolver as `context`
       return req;
    },
-   signToken: function ({ email, name, _id }) {
-      const payload = { email, name, _id };
+   signToken: function ({ email, username, _id }) {
+      const payload = { email, username, _id };
       return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
    },
 };

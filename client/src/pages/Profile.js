@@ -1,8 +1,8 @@
 import React from 'react';
-import { getProfile } from '../utils/auth';
+import Auth from '../utils/auth';
 const Profile = () => {
-   const user = getProfile();
-   console.log(user);
+   const { data } = Auth.getProfile();
+   console.log(data);
    return <h2>logged in</h2>;
 };
 export default Profile;

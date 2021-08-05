@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Container } from 'react-bootstrap';
-import { getToken, loggedIn } from './utils/auth';
+import Auth from './utils/auth';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -18,7 +18,7 @@ const authLink = setContext((_, { headers }) => {
    return {
       headers: {
          ...headers,
-         authorization: getToken() ? `Bearer ${getToken()}` : '',
+         authorization: Auth.getToken() ? `Bearer ${Auth.getToken()}` : '',
       },
    };
 });
@@ -29,15 +29,14 @@ const client = new ApolloClient({
 });
 
 function App() {
-   const homePage = loggedIn() ? Profile : Home;
+   const homePage = Auth.loggedIn() ? Profile : Home;
    return (
       <ApolloProvider client={client}>
          <Router>
-            <Navbar authRoute="/" />
+            <Navbar />
             <Container>
                <Route exact path="/" component={homePage} />
             </Container>
-            <Footer />
          </Router>
       </ApolloProvider>
    );
